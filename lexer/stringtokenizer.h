@@ -3,11 +3,16 @@
 
 #include <QRegularExpression>
 #include <QStringList>
+#include <QVariant>
+
+#include "lexer/tokentype.h"
+
 
 class StringTokenizer
 {
     public:
         static QStringList tokenize(QString src);
+        static QList<Token> scan(QString src);
 
 };
 

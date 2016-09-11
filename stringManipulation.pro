@@ -14,7 +14,8 @@ SOURCES += main.cpp \
     lexer/tokentype.cpp \
     tests/test_tokentype.cpp \
     lexer/stringtokenizer.cpp \
-    tests/test_stringtokenizer.cpp
+    tests/test_stringtokenizer.cpp \
+    tests/test_qvariant.cpp
 
 HEADERS += \
     catch.hpp \

@@ -23,3 +23,26 @@ TokenType::Type TokenType::getType(QString src)
     else
         return Unknown;
 }
+
+
+Token TokenType::analyseToken(QString token)
+{
+    auto type = getType(token);
+    if (type == Identifier)
+    {
+        return Token{Identifier, token};
+    }
+    if (type == NumericLiteral)
+    {
+        QVariant number = token;
+        return Token{NumericLiteral, number.toDouble()};
+    }
+    return Token{Unknown, -1};
+}
+
+QString Token::toString() const
+{
+
+    return QString("(%1, %2)").arg(TokenType::toString(type)).arg(value.toString());
+
+}

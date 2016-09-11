@@ -12,3 +12,16 @@ QStringList StringTokenizer::tokenize(QString src)
 
     return list;
 }
+
+QList<Token> StringTokenizer::scan(QString src)
+{
+    auto tokens = tokenize(src);
+    QList<Token> result;
+    for (const auto& token : tokens)
+    {
+        Token value = TokenType::analyseToken(token);
+        result << value;
+    }
+
+    return result;
+}
