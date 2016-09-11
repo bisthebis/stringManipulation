@@ -6,14 +6,16 @@
 
 TEST_CASE ("Splitting is correct", "[stringtokenizer]")
 {
-    QString input = "_azerty yolo23 CONNARD 534";
+    QString input = "_MyVariable = 450 + (THIS_IS_A_CONSTANT/0b11) - 0xFF*789.32; \n Result = func(x, y);";
+    static const QStringList expected {"_azerty", "yolo23", "CONNARD", "534"};
+
     auto tokens = StringTokenizer::tokenize(input);
-    for (auto token : tokens)
-    {
-        //token.chop(1);
-        //token.remove(0, 1);
-        qDebug() << "Token : " << token << "and type : " << TokenType::getType(token) << ". Lentgh : " << token.length();
-    }
+
+    CHECK (tokens == expected);
+    if (tokens != expected)
+        qDebug() << tokens;
+
+
 
 
 }

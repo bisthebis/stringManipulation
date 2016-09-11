@@ -12,11 +12,11 @@ TEST_CASE ("Tokenizer recognises identifiers", "[tokentype]")
     CHECK_FALSE(TYPE("01THISISNOTAVARIABLE") == TokenType::Identifier);
 
     CHECK(TYPE("056452") == TokenType::NumericLiteral);
-    CHECK(TYPE("+0x6789") == TokenType::NumericLiteral);
-    CHECK(TYPE("-0xFF") == TokenType::NumericLiteral);
-    CHECK(TYPE("-0b0100110") == TokenType::NumericLiteral);
+    CHECK_FALSE(TYPE("+0x6789") == TokenType::NumericLiteral); //Plus must be either unary or binary operator
+    CHECK(TYPE("0xFF") == TokenType::NumericLiteral);
+    CHECK(TYPE("0b0100110") == TokenType::NumericLiteral);
     CHECK(TYPE("0.056448") == TokenType::NumericLiteral);
-    CHECK(TYPE("-3,1425423") == TokenType::NumericLiteral);
+    CHECK_FALSE(TYPE("-3,1425423") == TokenType::NumericLiteral); // minus must be seen as unary operator
 
 
 
